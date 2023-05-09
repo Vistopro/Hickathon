@@ -8,6 +8,6 @@ app.use(express.json());
 
 app.get('/', (req, res) => res.send("Hello World!"));
 
-app.use("/api/v1/users", absencesAppRoutes);
+app.use("/api/v1", absencesAppRoutes);
 
 app.listen(port, () => console.log(`app listening on port ${port}!`));

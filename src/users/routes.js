@@ -3,13 +3,13 @@ const controller = require('./controller');
 
 const router = Router();
 
-// router.get("/", controller.createAbsence);
-router.get("/:id", controller.viewAbsenceRequests);
+router.post("/users/:id", controller.createAbsence);
+router.get("/users/:id", controller.viewAbsenceRequests);
 // router.get("/", controller.editAbsence);
 // router.get("/", controller.deleteAbsence);
-router.get("/", controller.reviewAbsenceRequestsManager);
-// router.get("/", controller.removeUsers);
-// router.get("/", controller.editUsers);
-// router.get("/", controller.addUsers);
+router.get("/manager", controller.reviewAbsenceRequestsManager);
+router.delete("/manager/:id", controller.removeUsers);
+// router.put("/:id", controller.editUsers);
+router.post("/manager", controller.addUsers);
 
 module.exports = router;
