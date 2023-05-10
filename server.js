@@ -1,5 +1,5 @@
 const express = require('express');
-const absencesAppRoutes = require('./src/users/routes');
+const absencesAppRoutes = require('./src/api/routes');
 
 const app = express();
 const port = 3000;
