@@ -7,12 +7,15 @@ const loginUser = async (req, res) => {
   const { email, password } = req.body;
   try {
     const query = 'SELECT password FROM users WHERE email = $1';
-    const result = await pool.query(query, [email]);
-    if (result.rows.length === 0) {
+    
+   //Validate user exists 
+   const result = await pool.query(query, [email]);
+       if (result.rows.length === 0) {
       res.status(401).json("Invalid email");
       return;
     }
     const storedPassword = result.rows[0].password;
+    //Validate password
     const passwordValid = await bcrypt.compare(password, storedPassword);
 
     if (passwordValid) {
@@ -24,7 +27,12 @@ const loginUser = async (req, res) => {
     console.error(error);
     res.status(500).json("Internal Server Error");
   }
-};
+ // Generate token
+  const token = jwt.sign({ 
+    email: email,
+  }, process.env.SECRET_KEY || 'token not found')
+
+  };
 
 
 const getUsers = (req, res) => {
