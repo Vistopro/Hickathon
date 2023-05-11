@@ -3,6 +3,7 @@ const controller = require('./controller');
 
 const router = Router();
 
+router.post("/user", controller.loginUser);
 router.post("/users/:id_user", controller.createAbsence);
 router.get("/users/:id_user", controller.viewAbsenceRequests);
 router.put("/users/:id_user/:id", controller.editAbsence);

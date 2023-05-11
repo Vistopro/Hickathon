@@ -1,5 +1,31 @@
 const pool = require('../../db');
 const queries = require('./queries');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
+const loginUser = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const query = 'SELECT password FROM users WHERE email = $1';
+    const result = await pool.query(query, [email]);
+    if (result.rows.length === 0) {
+      res.status(401).json("Invalid email");
+      return;
+    }
+    const storedPassword = result.rows[0].password;
+    const passwordValid = await bcrypt.compare(password, storedPassword);
+
+    if (passwordValid) {
+      res.status(200).json("Login Successful");
+    } else {
+      res.status(401).json("Invalid password");
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json("Internal Server Error");
+  }
+};
+
 
 const getUsers = (req, res) => {
     pool.query(queries.getUsers, (error, response) => {
@@ -43,8 +69,11 @@ const reviewAbsenceRequestsManager = (req, res) => {
     });
 };
 
-const addUsers = (req, res) => {
-  const {name, email, password, rol, absences, department } = req.body;
+const addUsers = async (req, res) => {
+  const {name, email,rol, password, absences, department } = req.body;
+
+  const hashedPassword = await bcrypt.hash(password, 10);
+  console.log(hashedPassword);
 
   pool.query(queries.checkEmailExists, [email], (error, response) => {
     if (response.rows.length) {
@@ -52,7 +81,7 @@ const addUsers = (req, res) => {
     } else {
       pool.query(
         queries.addUsers,
-        [name, email, password, rol, absences, department],
+        [name, email, hashedPassword, rol, absences, department],
         (error, response) => {
           if (error) {
             console.log(error);
@@ -168,6 +197,7 @@ const editStatus = (req, res) => {
 };
 
 module.exports = {
+  loginUser,
     createAbsence,
     viewAbsenceRequests,
     editAbsence,

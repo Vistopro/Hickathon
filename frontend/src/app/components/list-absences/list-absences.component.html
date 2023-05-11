@@ -1,0 +1,36 @@
+<div class="container">
+    <h3 class="title">Absences list</h3>
+  
+    <div class="header">
+      <button type="button" class="btn btn-primary">Create absence</button>
+    </div>
+  
+    <table class="table table-hover mt-4">
+      <thead>
+        <tr class="table-primary">
+          <th scope="col">Nº ABSENCE</th>
+          <th scope="col">EMPLOYEE</th>
+          <th scope="col">START DATE</th>
+          <th scope="col">END DATE</th>
+          <th scope="col">STATUS</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of listAbsences" class="table-active">
+          <td>{{ item.absence_id }}</td>
+          <td>{{ item.employee }}</td>
+          <td>{{ item.start_day }}</td>
+          <td>{{ item.end_day }}</td>
+          <td>{{ item.status }}</td>
+          <td>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-primary">Edit absence</button>
+              <button type="button" class="btn btn-primary">Delete absence</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
