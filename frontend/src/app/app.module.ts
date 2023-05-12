@@ -10,12 +10,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Componentes
 import { ListAbsencesComponent } from './components/list-absences/list-absences.component';
-import { AddEditAbsencesComponent } from './components/add-edit-absences/add-edit-absences.component';
+
 import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
 import { environment } from '../environments/environment';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { UsersComponent } from './components/users/users.component';
+import { AddAbsenceComponent } from './components/add-absence/add-absence.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
+
 
 
 
@@ -23,11 +27,13 @@ import { AddUserComponent } from './components/add-user/add-user.component';
   declarations: [
     AppComponent,
     ListAbsencesComponent,
-    AddEditAbsencesComponent,
+
     LoginComponent,
     NavbarComponent,
-    AddUserComponent
-  
+    AddUserComponent,
+    UsersComponent,
+    AddAbsenceComponent,
+    EditUserComponent 
   ],
   imports: [
     BrowserModule,

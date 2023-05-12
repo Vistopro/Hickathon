@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <div class="card mt-5">
+          <div class="card-body">
+            <form>
+              <fieldset>
+                <legend class="text-center">EDIT USER</legend>
+                
+                <div class="form-group">
+                  <label for="name" class="form-label mt-4">Name</label>
+                  <input type="text" [(ngModel)]="name" class="form-control" [ngModelOptions]="{ standalone: true }" id="name" aria-describedby="nameHelp" placeholder="Enter full name">    
+                </div>
+                
+                <div class="form-group">
+                  <label for="email" class="form-label mt-4">Email address</label>
+                  <input type="email" [(ngModel)]="email" class="form-control" [ngModelOptions]="{ standalone: true }" id="email" aria-describedby="emailHelp" placeholder="Enter email">    
+                </div>
+                
+                <div class="form-group">
+                  <label for="inputPassword1" class="form-label mt-4">Password</label>
+                  <input type="password" [(ngModel)]="password" class="form-control" [ngModelOptions]="{ standalone: true }" id="inputPassword1" placeholder="Password">
+                </div>
+                
+                <div class="form-group">
+                  <label for="inputRole" class="form-label mt-4">Role</label>
+                  <select class="form-control" [(ngModel)]="rol" [ngModelOptions]="{ standalone: true }" id="inputRole">
+                    <option value="manager">Manager</option>
+                    <option value="employee">Employee</option>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label for="inputAbsences" class="form-label mt-4">Number of absences</label>
+                  <input type="number" [(ngModel)]="absences" class="form-control" [ngModelOptions]="{ standalone: true }" id="inputAbsences" placeholder="Absences">
+                </div>
+                
+                <div class="form-group">
+                  <label for="inputDepartment" class="form-label mt-4">Department</label>
+                  <input type="text" [(ngModel)]="department" class="form-control" [ngModelOptions]="{ standalone: true }" id="inputDepartment" placeholder="Department">
+                </div>
+                
+                <div class="text-center mt-4">
+                  <button type="submit" (click)="editUser()" class="btn btn-primary" >Register</button>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

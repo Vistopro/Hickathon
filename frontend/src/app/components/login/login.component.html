@@ -7,12 +7,12 @@
               <fieldset>
                 <legend class="text-center">Sign in to Hickathon</legend>
                 <div class="form-group">
-                  <label for="inputEmail1" [(ngModel)]="email" class="form-label mt-4">Email address</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                  <label for="inputEmail1"  class="form-label mt-4">Email address</label>
+                  <input type="email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
                 </div>
                 <div class="form-group">
-                  <label for="inputPassword1" [(ngModel)]="password"  class="form-label mt-4">Password</label>
-                  <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
+                  <label for="inputPassword1"   class="form-label mt-4">Password</label>
+                  <input type="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" class="form-control" id="inputPassword1" placeholder="Password">
                 </div>
                 <div class="text-center mt-4">
                   <button type="submit" (click)="login()"  class="btn btn-primary">Sign in</button>

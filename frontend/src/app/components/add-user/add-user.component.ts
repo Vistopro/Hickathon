@@ -43,7 +43,7 @@ addUser() {
   this._addUserService.addUser(user).subscribe(data => {
     console.log('the user was added');
     alert('User added successfully');
-    this.router.navigate(['/manager/absences']);
+    this.router.navigate(['/manager/users']);
   
   }
   )

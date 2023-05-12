@@ -35,10 +35,10 @@ export class LoginComponent implements OnInit {
 
   this._loginService.login(login).subscribe({
     next:(data) => {
-      
+
       this.router.navigate(['/manager/absences']);
       localStorage.setItem('token', data);
-      console.log(data);
+ 
     }
       })
 

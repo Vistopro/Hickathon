@@ -12,7 +12,7 @@ export class loginService {
 
 constructor(private http: HttpClient) {
     this.myAppUrl = environment.apiUrl;
-    this.myApiUrl = 'api/v1/login';
+    this.myApiUrl = 'api/v1/user';
    }
 
    login(login : Login): Observable<string>{
