@@ -19,18 +19,20 @@ const loginUser = async (req, res) => {
     const passwordValid = await bcrypt.compare(password, storedPassword);
 
     if (passwordValid) {
-      res.status(200).json("Login Successful");
+      // Generar el token
+      const token = jwt.sign({ 
+        email: email
+      }, process.env.SECRET_KEY || 'token not found');
+
+      // Enviar la respuesta con el token
+      res.status(200).json({ token: token });
     } else {
-      res.status(401).json("Invalid password");
+      res.status(401).json("Contraseña inválida");
     }
   } catch (error) {
     console.error(error);
-    res.status(500).json("Internal Server Error");
+    res.status(500).json("Error interno del servidor");
   }
- // Generate token
-  const token = jwt.sign({ 
-    email: email,
-  }, process.env.SECRET_KEY || 'token not found')
 
   };
 

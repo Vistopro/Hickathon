@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 
 // modulos
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 // Componentes
 import { ListAbsencesComponent } from './components/list-absences/list-absences.component';
@@ -15,6 +16,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 
 import { environment } from '../environments/environment';
 import { AddUserComponent } from './components/add-user/add-user.component';
+
 
 
 @NgModule({
@@ -30,7 +32,8 @@ import { AddUserComponent } from './components/add-user/add-user.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
