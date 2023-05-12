@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { Router } from 'express';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AddUserService } from 'src/app/services/add-user.service';
+import { User } from 'src/app/interfaces/addUser';
 
 
 @Component({
@@ -16,10 +17,10 @@ rol: string = '';
 absences: number = 0;
 department: string = '';
 
-// constructor(
-//   private _userService: AddUserService,
-//   private router: Router
-// ) { }
+constructor(
+  private _addUserService: AddUserService,
+  private router: Router
+) { }
 
 addUser() {
   //Validate there are no empty fields
@@ -28,7 +29,7 @@ addUser() {
     return;
   }
   // Create an object with the data from the form
-  const user = {
+  const user: User = {
     name: this.name,
     email: this.email,
     password: this.password,
@@ -39,14 +40,13 @@ addUser() {
   // Send the request to the server
   console.log(user);
 
-  // // this._userService.addUser(this.name, this.email, this.password, this.rol, this.absences, this.department).subscribe(data => {
-  // //   console.log('the user was added');
-  // //   alert('User added successfully');
+  this._addUserService.addUser(user).subscribe(data => {
+    console.log('the user was added');
+    alert('User added successfully');
+    this.router.navigate(['/manager/absences']);
   
-  // }
-  // )
+  }
+  )
 }
-
-
 
 }

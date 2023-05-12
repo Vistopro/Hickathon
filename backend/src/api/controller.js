@@ -97,7 +97,8 @@ const addUsers = async (req, res) => {
             console.log(error);
             res.status(500).send("Error creating user");
           } else {
-            res.status(201).send("User Created Succesfully!");
+            res.status(201).json({ message: "User Created Successfully!" });
+
           }
         }
       );

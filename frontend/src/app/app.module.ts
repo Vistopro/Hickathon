@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 
 // modulos
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Componentes
 import { ListAbsencesComponent } from './components/list-absences/list-absences.component';
